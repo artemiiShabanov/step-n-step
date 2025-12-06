@@ -1,6 +1,6 @@
 @tool
-extends Tile
-class_name BasicTile
+extends Area2D
+class_name BasicGap
 
 @export var size: Vector2 = Vector2(100, 100):
 	set(value):
@@ -20,6 +20,3 @@ func _update_collision():
 		collision.shape.size = size
 	if sprite:
 		sprite.scale = Vector2(size.x / 100, size.y / 100)
-
-func _on_tile_activated(body: Node2D):
-	sprite.modulate = Color.GREEN_YELLOW

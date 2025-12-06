@@ -23,6 +23,15 @@ Storage="*res://global/storage.gd"
 Controller="*res://global/controller.gd"
 Player="*res://global/player.gd"
 
+[display]
+
+window/size/viewport_width=1179
+window/size/viewport_height=2277
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
 [file_customization]
 
 folder_colors={

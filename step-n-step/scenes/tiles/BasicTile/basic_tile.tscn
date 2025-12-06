@@ -1,20 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b58txwu7vml63"]
+[gd_scene load_steps=5 format=3 uid="uid://b58txwu7vml63"]
 
 [ext_resource type="Script" uid="uid://3rt1k1ggelr0" path="res://scenes/tiles/BasicTile/basic_tile.gd" id="1_kq410"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq410"]
-size = Vector2(39, 26)
+size = Vector2(250, 300)
+
+[sub_resource type="Gradient" id="Gradient_kq410"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q4kia"]
+gradient = SubResource("Gradient_kq410")
+width = 100
+height = 100
 
 [node name="BasicTile" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_kq410")
+tile_id = "2205499341921"
 metadata/_custom_type_script = "uid://dwlvk11esugsd"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_kq410")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -13.0
-offset_right = 19.0
-offset_bottom = 13.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(0.5, 1)
+texture = SubResource("GradientTexture2D_q4kia")

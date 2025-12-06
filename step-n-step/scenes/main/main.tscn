@@ -1,16 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0whtluplpe3l"]
+[gd_scene load_steps=4 format=3 uid="uid://d0whtluplpe3l"]
 
 [ext_resource type="Script" uid="uid://c1efvnkmuv0as" path="res://scenes/main/main.gd" id="1_hyk8p"]
 [ext_resource type="PackedScene" uid="uid://bapdth56vs71f" path="res://scenes/ball/ball.tscn" id="2_iuonh"]
-[ext_resource type="PackedScene" uid="uid://b58txwu7vml63" path="res://scenes/tiles/BasicTile/basic_tile.tscn" id="3_k2fmo"]
-[ext_resource type="PackedScene" uid="uid://dxrkyxmxrueid" path="res://scenes/tiles/BasicGap/basic_gap.tscn" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://bys0ejt6xdbpe" path="res://scenes/road/road.tscn" id="5_6q06x"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hyk8p")
 
 [node name="Ball" parent="." instance=ExtResource("2_iuonh")]
 z_index = 70
-position = Vector2(583, 313)
+position = Vector2(583, 1500)
 scale = Vector2(0.1, 0.1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -25,13 +24,4 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BasicTile" parent="." instance=ExtResource("3_k2fmo")]
-position = Vector2(927, 317)
-scale = Vector2(6, 6)
-
-[node name="BasicGap" parent="." instance=ExtResource("4_l3cfh")]
-position = Vector2(115, 311)
-scale = Vector2(1.59, 1.59)
-
-[connection signal="tile_activated" from="BasicTile" to="." method="_on_basic_tile_tile_activated"]
-[connection signal="tile_activated" from="BasicGap" to="." method="_on_basic_gap_tile_activated"]
+[node name="Road" parent="." instance=ExtResource("5_6q06x")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c10cg6ab55skd"]
+
+[ext_resource type="Script" uid="uid://b65ac8m6e7med" path="res://scenes/chunks/CheckersChunk/checkers_chunk.gd" id="1_qc65w"]
+
+[node name="CheckersChunk" type="Node2D"]
+script = ExtResource("1_qc65w")
+metadata/_custom_type_script = "uid://b65ac8m6e7med"

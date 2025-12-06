@@ -1,12 +1,26 @@
 extends Node2D
 
 @onready var ball = $Ball
+@onready var road = $Road
+
+const canvas_width = 1179.0
+const canvas_height = 2277.0
+const ball_padding = 600.0
 
 func _ready() -> void:
+	_setup_controls()
+	_layout()
+
+func _setup_controls():
 	Controller.left.connect(handle_left)
 	Controller.right.connect(handle_right)
 	Controller.force.connect(handle_force)
-	
+
+func _layout():
+	var safe_area_rect = DisplayServer.get_display_safe_area()
+	var bottom_safe_area_y = canvas_height - safe_area_rect.size.y - safe_area_rect.position.y
+	ball.position.y = canvas_height - bottom_safe_area_y - ball_padding
+
 
 func handle_left():
 	ball.move_left()

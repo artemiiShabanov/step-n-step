@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxrkyxmxrueid"]
+[gd_scene load_steps=5 format=3 uid="uid://dxrkyxmxrueid"]
 
-[ext_resource type="Script" uid="uid://6ip3s7jewl4a" path="res://scenes/base/gap.gd" id="1_wn47b"]
+[ext_resource type="Script" uid="uid://bosegu8pysgay" path="res://scenes/tiles/BasicGap/basic_gap.gd" id="1_wn47b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehbi2"]
-size = Vector2(110, 183)
+size = Vector2(50, 100)
+
+[sub_resource type="Gradient" id="Gradient_wn47b"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ehbi2"]
+gradient = SubResource("Gradient_wn47b")
+width = 100
+height = 100
 
 [node name="BasicGap" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_wn47b")
 metadata/_custom_type_script = "uid://6ip3s7jewl4a"
 
@@ -13,9 +22,5 @@ metadata/_custom_type_script = "uid://6ip3s7jewl4a"
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ehbi2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -55.0
-offset_top = -91.0
-offset_right = 55.0
-offset_bottom = 92.0
-color = Color(1, 0, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_ehbi2")

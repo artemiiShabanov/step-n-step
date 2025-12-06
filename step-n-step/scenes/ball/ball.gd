@@ -37,10 +37,11 @@ enum Lane { LEFT, CENTER, RIGHT }
 var current_lane: Lane = Lane.CENTER
 
 # Lane positions (customize these based on your game layout)
+const canvas_width = 1179.0
 const lane_positions = {
-	Lane.LEFT: 100.0,
-	Lane.CENTER: 500.0, 
-	Lane.RIGHT: 900.0
+	Lane.LEFT: 50 + (canvas_width - 100 - 20) / 6,
+	Lane.CENTER: canvas_width / 2, 
+	Lane.RIGHT: canvas_width * 4 / 5 - 10
 }
 
 # Collisions
