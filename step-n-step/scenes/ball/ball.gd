@@ -2,6 +2,8 @@ extends Area2D
 
 # Signals
 signal crashed
+signal started_colliding
+signal stopped_colliding
 
 # Nodes
 @onready var sprite = $Sprite
@@ -12,7 +14,7 @@ signal crashed
 @export var min_scale: float = 1  # Min scale at bounce bottom
 @export var bounce_speed: float = 3.0   # How fast the ball bounces
 @export var force_speed: float = 3.0   # Additional speed applyed on force
-@export var default_health: int = 3   # Default health
+@export var default_health: int = 300   # Default health
 
 # Bounce state variables
 var is_bouncing: bool = true
@@ -26,6 +28,7 @@ var force_progress: float = 0.0
 var extra_speed = 0
 # health
 var health = default_health
+var is_colliding = false
 
 # Movement
 var target_x: float = 0.0
@@ -41,7 +44,7 @@ const canvas_width = 1179.0
 const lane_positions = {
 	Lane.LEFT: 50 + (canvas_width - 100 - 20) / 6,
 	Lane.CENTER: canvas_width / 2, 
-	Lane.RIGHT: canvas_width * 4 / 5 - 10
+	Lane.RIGHT: canvas_width - 50 - (canvas_width - 100 - 20) / 6
 }
 
 # Collisions
@@ -149,10 +152,15 @@ func _move_to_lane(lane: Lane):
 	is_moving = true
 
 func _update_colliding():
-	if current_scale < min_scale + colliding_threshold:
+	var can_collide = current_scale < min_scale + colliding_threshold
+	if !is_colliding and can_collide:
+		is_colliding = true
+		started_colliding.emit()
 		collision_layer = default_collision_layer
 		sprite.animation = "colliding"
-	else:
+	elif is_colliding and !can_collide:
+		is_colliding = false
+		stopped_colliding.emit()
 		collision_layer = 0
 		sprite.animation = "default"
 

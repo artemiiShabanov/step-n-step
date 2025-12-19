@@ -5,7 +5,11 @@ signal tile_activated(tile_id: String, tile_type: String, meta: Array, colliding
 signal gap_activated(colliding_body: Node2D)
 
 # Chunk scenes - preload these in the inspector
-var chunk_scenes: Array[PackedScene] = [preload("res://scenes/chunks/CheckersChunk/checkers_chunk.tscn")]
+var chunk_scenes: Array[PackedScene] = [
+	preload("res://scenes/chunks/RunningChunk/running_chunk.tscn"),
+	preload("res://scenes/chunks/ZebraChunk/zebra_chunk.tscn"),
+	preload("res://scenes/chunks/CheckersChunk/checkers_chunk.tscn")
+]
 
 # Basic configuration
 @export var scroll_speed: float = 400.0
@@ -23,7 +27,7 @@ var chunk_scenes: Array[PackedScene] = [preload("res://scenes/chunks/CheckersChu
 @export var difficulty_curve: Curve
 
 # Chunk weights - control how chunk frequency changes with difficulty
-var chunk_weights: Array[float] = [1.0]  # Should match chunk_scenes size
+var chunk_weights: Array[float] = [1.0, 1.0, 1.0]  # Should match chunk_scenes size
 
 # Runtime variables
 var active_chunks: Array[Node2D] = []
@@ -62,7 +66,6 @@ func spawn_chunks_above():
 	var top_chunk_bottom_edge = top_chunk.position.y + chunk_height
 	
 	# Spawn new chunk when we're close to the top of the highest one
-	var viewport_height = get_viewport().size.y
 	if top_chunk_bottom_edge > 0:
 		spawn_chunk()
 

@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://3rt1k1ggelr0" path="res://scenes/tiles/BasicTile/basic_tile.gd" id="1_kq410"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq410"]
-size = Vector2(250, 300)
+size = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_kq410"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q4kia"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kq410"]
 gradient = SubResource("Gradient_kq410")
 width = 100
 height = 100
@@ -24,5 +24,4 @@ shape = SubResource("RectangleShape2D_kq410")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 0)
-scale = Vector2(0.5, 1)
-texture = SubResource("GradientTexture2D_q4kia")
+texture = SubResource("GradientTexture2D_kq410")

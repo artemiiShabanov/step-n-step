@@ -5,12 +5,17 @@ const MAX_SCORE_KEY = "max_score"
 signal max_score_updated
 signal score_updated
 
+signal scan_failed
+
 var rng = RandomNumberGenerator.new()
 
 var max_score: int
 
 var previous_score: int = 0
 var previous_was_best: bool = false
+
+var scan_active = false
+var scanned_success = false
 
 var current_score: int:
 	set(value):
@@ -46,3 +51,15 @@ func save_score_if_needed():
 		Storage.set_value(MAX_SCORE_KEY, max_score)
 		max_score_updated.emit()
 		Storage.save_to_cache()
+
+func start_scanning():
+	scan_active = true
+
+func scanned():
+	scanned_success = true
+
+func stop_scanning():
+	if scan_active and !scanned_success:
+		scan_failed.emit()
+	scan_active = false
+	scanned_success = false

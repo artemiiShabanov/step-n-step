@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bosegu8pysgay" path="res://scenes/tiles/BasicGap/basic_gap.gd" id="1_wn47b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehbi2"]
-size = Vector2(50, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn47b"]
+size = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_wn47b"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+colors = PackedColorArray(1, 0, 0, 0.396078, 1, 0, 0, 0.490196)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ehbi2"]
 gradient = SubResource("Gradient_wn47b")
@@ -16,11 +16,12 @@ height = 100
 [node name="BasicGap" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_wn47b")
+tile_id = "2211623025802"
 metadata/_custom_type_script = "uid://6ip3s7jewl4a"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_ehbi2")
+shape = SubResource("RectangleShape2D_wn47b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_ehbi2")

@@ -25,3 +25,8 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Road" parent="." instance=ExtResource("5_6q06x")]
+
+[connection signal="crashed" from="Ball" to="." method="_on_ball_crashed"]
+[connection signal="started_colliding" from="Ball" to="." method="_on_ball_started_colliding"]
+[connection signal="stopped_colliding" from="Ball" to="." method="_on_ball_stopped_colliding"]
+[connection signal="tile_activated" from="Road" to="." method="_on_road_tile_activated"]

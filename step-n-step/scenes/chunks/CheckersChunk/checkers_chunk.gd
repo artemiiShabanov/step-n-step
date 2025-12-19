@@ -4,11 +4,11 @@ class_name CheckersChunk
 
 const canvas_size: Vector2 = Vector2(1179, 3400)
 
-@export var grid_size: Vector2i = Vector2i(3, 6)
+@export var grid_size: Vector2i = Vector2i(3, 8)
 @export var padding: Vector2 = Vector2(20, 20)
 @export var margin: Vector2 = Vector2(50, 50)
-const node_type1 = preload("res://scenes/tiles/BasicTile/basic_tile.tscn")
-const node_type2 = preload("res://scenes/tiles/BasicGap/basic_gap.tscn")
+const node_type = preload("res://scenes/tiles/BasicTile/basic_tile.tscn")
+#const node_type2 = preload("res://scenes/tiles/BasicGap/basic_gap.tscn")
 @export var center_grid: bool = true
 
 var cell_size: Vector2
@@ -49,29 +49,31 @@ func create_checkerboard():
 	for y in range(grid_size.y):
 		for x in range(grid_size.x):
 			# Checker pattern logic
-			var is_type1 = (x + y) % 2 == 0
+			var is_node = (x + y) % 2 == 0
+			
+			if is_node:
+				var cell_node = node_type.instantiate()
 			
 			# Instantiate node
-			var cell_node
-			if is_type1 and node_type1:
-				cell_node = node_type1.instantiate()
-			elif node_type2:
-				cell_node = node_type2.instantiate()
-			else:
-				continue
+			#var cell_node
+			#if is_type1 and node_type1:
+			#elif node_type2:
+				#cell_node = node_type2.instantiate()
+			#else:
+				#continue
 			
-			add_child(cell_node)
+				add_child(cell_node)
 			
-			# Calculate position with padding
-			var pos_x = start_position.x + x * (cell_size.x + padding.x) + cell_size.x / 2
-			var pos_y = start_position.y + y * (cell_size.y + padding.y) + cell_size.y / 2
-			cell_node.position = Vector2(pos_x, pos_y)
-			
-			# Optionally set size if the node has a size property
-			if cell_node.has_method("set_size"):
-				cell_node.set_size(cell_size)
-			elif "size" in cell_node:
-				cell_node.size = cell_size
+				# Calculate position with padding
+				var pos_x = start_position.x + x * (cell_size.x + padding.x) + cell_size.x / 2
+				var pos_y = start_position.y + y * (cell_size.y + padding.y) + cell_size.y / 2
+				cell_node.position = Vector2(pos_x, pos_y)
+				
+				# Optionally set size if the node has a size property
+				if cell_node.has_method("set_size"):
+					cell_node.set_size(cell_size)
+				elif "size" in cell_node:
+					cell_node.size = cell_size
 
 # Optional: Helper function to get cell center position
 func get_cell_center_position(grid_x: int, grid_y: int) -> Vector2:
